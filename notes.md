@@ -33,3 +33,27 @@ how to reproduce:
 
 - increment_font_size() is in **GuakeTerminal** in **terminal.py**
 
+
+when split() is called inside there is a terminal_spawn() function to create the new terminal. 
+The new termial (**GuakeTerminal** instance) require a **Guake** instance
+Inside the **GuakeTerminal** the *font_scale_index* is set to 0. 
+It could be set to a new param inside the **Guake** instance we pass as param. 
+
+the new param can be called *zoom* (starting from 0) that increases / decreases when Guake.zoom_in() / Guake.zoom_out() is called
+
+### Classes
+
+```
+| RootTerminalBox
+|
+|
+|||||||| TerminalBox (container box + scrollbar)
+```
+
+### Docs
+
+Gtk docs:
+
+```
+https://docs.gtk.org/gtk3
+```
