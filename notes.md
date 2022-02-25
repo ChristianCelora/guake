@@ -57,3 +57,7 @@ Gtk docs:
 ```
 https://docs.gtk.org/gtk3
 ```
+
+### TO DO
+
+- check set_font() and set_font_scale_index(). self.font is required in set_font_scale_index() but never specified
