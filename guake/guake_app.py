@@ -203,9 +203,6 @@ class Guake(SimpleGladeApp):
         self.notebook_manager.set_workspace(0)
         self.set_tab_position()
 
-        # store the font scale index
-        self.scale_index = 0
-
         # check and set ARGB for real transparency
         self.update_visual()
         self.window.get_screen().connect("composited-changed", self.update_visual)
@@ -937,13 +934,11 @@ class Guake(SimpleGladeApp):
 
     def accel_zoom_in(self, *args):
         """Callback to zoom in."""
-        self.scale_index += 1
         for term in self.get_notebook().iter_terminals():
             term.increase_font_size()
         return True
 
     def accel_zoom_out(self, *args):
-        self.scale_index -= 1
         """Callback to zoom out."""
         for term in self.get_notebook().iter_terminals():
             term.decrease_font_size()

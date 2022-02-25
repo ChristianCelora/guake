@@ -492,7 +492,7 @@ class GuakeTerminal(Vte.Terminal):
 
     def set_font(self, font):
         self.font = font
-        self.set_font_scale_index(self.guake.scale_index)
+        self.set_font_scale_index(0)
 
     def set_font_scale_index(self, scale_index):
         self.font_scale_index = clamp(scale_index, -6, 12)
