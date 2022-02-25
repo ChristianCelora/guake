@@ -44,6 +44,8 @@ Bug Fixes
 
 - Use keycodes instead of keyvals for keybindings. This allow to use keybindings with different keyboard layouts.
 
+- Fix issue splitting terminal do not reset font size
+
 Notes for Package Maintainers
 -----------------------------
 
