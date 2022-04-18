@@ -478,21 +478,29 @@ class GuakeTerminal(Vte.Terminal):
         if value:
             return value
 
+    def get_link_under_terminal_cursor(self):
+        cursor_position = self.get_cursor_position()
+        matched_string = self.match_check(cursor_position.column, cursor_position.row)
+        link = self.handleTerminalMatch(matched_string)
+        if link:
+            return link
+
     def get_link_under_cursor(self):
         return self.found_link
 
-    def browse_link_under_cursor(self):
+    def browse_link_under_cursor(self, url=None):
         # TODO move the call to xdg-open to guake.utils
-        if not self.found_link:
+        if not self.found_link and url is None:
             return
-        log.debug("Opening link: %s", self.found_link)
-        cmd = ["xdg-open", self.found_link]
+        url = url if url is not None else self.found_link
+        log.debug("Opening link: %s", url)
+        cmd = ["xdg-open", url]
         with subprocess.Popen(cmd, shell=False):
             pass
 
     def set_font(self, font):
         self.font = font
-        self.set_font_scale_index(0)
+        self.set_font_scale_index(self.font_scale)
 
     def set_font_scale_index(self, scale_index):
         self.font_scale_index = clamp(scale_index, -6, 12)
